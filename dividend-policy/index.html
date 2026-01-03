@@ -1,0 +1,2225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <title>Corporate Dividend Policy: A Comprehensive Review</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0F172A;
+            color: #1E293B
+        }
+
+        .presentation-container {
+            width: 100%;
+            height: 100vh;
+            max-width: 1280px;
+            margin: 0 auto;
+            position: relative;
+            background-color: #FFF;
+            overflow: hidden
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+            overflow-y: auto
+        }
+
+        .slide.active {
+            display: flex;
+            opacity: 1
+        }
+
+        .heading-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .nav-button {
+            position: fixed;
+            bottom: 24px;
+            background-color: rgba(30, 64, 175, 0.9);
+            color: #FFF;
+            border: none;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 100
+        }
+
+        .nav-button:hover {
+            background-color: rgba(30, 64, 175, 1);
+            transform: scale(1.1)
+        }
+
+        .nav-button:active {
+            transform: scale(0.95)
+        }
+
+        .nav-button:disabled {
+            background-color: rgba(148, 163, 184, 0.5);
+            cursor: not-allowed;
+            pointer-events: none
+        }
+
+        .nav-button:disabled:hover {
+            transform: none
+        }
+
+        .prev-btn {
+            right: 100px
+        }
+
+        .next-btn {
+            right: 24px
+        }
+
+        .slide-indicator {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translatex(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 100;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 90%
+        }
+
+        .indicator-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(30, 64, 175, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0
+        }
+
+        .indicator-dot.active {
+            background-color: #1E40AF;
+            transform: scale(1.2)
+        }
+
+        .indicator-dot:hover {
+            background-color: rgba(30, 64, 175, 0.6)
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 0.35rem 0.75rem;
+            border-radius: 9999px;
+            background-color: #EFF6FF;
+            color: #1E40AF;
+            font-size: 0.625rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            white-space: nowrap
+        }
+
+        .main-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            line-height: 1.1;
+            font-weight: 700;
+            color: #1E293B;
+            margin-bottom: 1rem
+        }
+
+        .theory-card {
+            background-color: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 0.75rem;
+            padding: clamp(0.75rem, 2vw, 1.5rem);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease
+        }
+
+        .theory-card:hover {
+            transform: translatey(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1)
+        }
+
+        .stat-box {
+            background-color: #EFF6FF;
+            border-left: 4px solid #1E40AF;
+            padding: clamp(0.75rem, 2vw, 1rem) clamp(0.75rem, 2vw, 1.25rem);
+            border-radius: 0 8px 8px 0;
+            margin-bottom: clamp(0.5rem, 1.5vw, 1rem);
+            margin-top: 10px;
+        }
+
+        .evidence-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.1875rem 0.5625rem;
+            border-radius: 9999px;
+            font-size: 0.625rem;
+            font-weight: 600;
+            white-space: nowrap
+        }
+
+        .badge-mixed {
+            background-color: #FEF3C7;
+            color: #92400E
+        }
+
+        .badge-supported {
+            background-color: #DCFCE7;
+            color: #166534
+        }
+
+        /* Mobile Portrait */
+        @media (max-width: 640px) {
+            .nav-button {
+                width: 48px;
+                height: 48px;
+                font-size: 20px;
+                bottom: 16px
+            }
+
+            .prev-btn {
+                right: 80px
+            }
+
+            .next-btn {
+                right: 16px
+            }
+
+            .slide-indicator {
+                bottom: 80px
+            }
+
+            .indicator-dot {
+                width: 8px;
+                height: 8px
+            }
+
+            .section-tag {
+                font-size: 0.5625rem;
+                padding: 0.28125rem 0.5625rem
+            }
+
+            .theory-card {
+                padding: 0.75rem
+            }
+
+            .stat-box {
+                padding: 0.75rem
+            }
+
+            .evidence-badge {
+                font-size: 0.5625rem;
+                padding: 0.15625rem 0.46875rem
+            }
+        }
+
+        /* Tablet Portrait */
+        @media (min-width: 641px) and (max-width: 968px) {
+            .nav-button {
+                width: 52px;
+                height: 52px;
+                font-size: 22px
+            }
+
+            .prev-btn {
+                right: 90px
+            }
+
+            .next-btn {
+                right: 20px
+            }
+
+            .slide-indicator {
+                bottom: 90px
+            }
+
+            .section-tag {
+                font-size: 0.6875rem
+            }
+
+            .theory-card {
+                padding: 1rem
+            }
+
+            .stat-box {
+                padding: 0.875rem
+            }
+        }
+
+        /* Mobile Landscape */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .nav-button {
+                width: 48px;
+                height: 48px;
+                bottom: 12px
+            }
+
+            .prev-btn {
+                right: 75px
+            }
+
+            .next-btn {
+                right: 12px
+            }
+
+            .slide-indicator {
+                bottom: 70px
+            }
+
+            .main-title {
+                font-size: 1.5rem
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="presentation-container">
+        <!-- Slide 1: Title -->
+        <div class="slide active" id="slide-1">
+            <div style="width: 100%;
+min-height: 100%;
+padding: clamp(1.5rem, 4vw, 4rem);
+display: flex;
+flex-direction: column;
+justify-content: center;
+background: linear-gradient(135deg, #EFF6FF 0%, #FFF 100%);
+position: relative;
+box-sizing: border-box">
+                <div style="position: absolute;
+top: clamp(1rem, 2vw, 20px);
+left: clamp(1.25rem, 3vw, 40px);
+display: flex;
+align-items: center;
+gap: clamp(0.5rem, 1vw, 12px);
+flex-wrap: wrap;
+z-index: 10">
+                    <div style="width: clamp(2rem, 5vw, 48px);
+height: clamp(2rem, 5vw, 48px);
+background: linear-gradient(135deg, #1E40AF, #7C3AED);
+border-radius: 12px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0">
+                        <i class="fas fa-chart-line text-white" style="font-size: clamp(0.75rem, 2vw, 1.25rem)"></i>
+                    </div>
+                    <div>
+                        <p style="font-size: clamp(0.6875rem, 1.5vw, 0.875rem);
+color: #64748B;
+font-weight: 600;
+text-transform: uppercase;
+letter-spacing: 0.05em;
+margin: 0;
+line-height: 1.2">EMBA Corporate Finance</p>
+                    </div>
+                </div>
+                <div style="max-width: 100%;
+margin-top: clamp(1rem, 3vw, 2rem)">
+                    <span class="section-tag">Research Overview</span>
+                    <h1 class="main-title heading-font">
+                        Corporate Dividend<br />Policy
+                    </h1>
+                    <div style="width: clamp(2rem, 5vw, 80px);
+height: 4px;
+background: linear-gradient(90deg, #1E40AF, #7C3AED);
+border-radius: 2px;
+margin-bottom: clamp(1rem, 3vw, 2rem)"></div>
+                    <p style="font-size: clamp(0.875rem, 2.5vw, 1.5rem);
+color: #64748B;
+line-height: 1.4;
+margin-bottom: clamp(1rem, 3vw, 3rem);
+font-weight: 300">
+                        A Comprehensive Review of Theory, Evidence, and Practice
+                    </p>
+                    <div style="display: flex;
+gap: clamp(1rem, 3vw, 2rem);
+margin-top: clamp(1rem, 3vw, 2rem);
+flex-wrap: wrap">
+                        <div>
+                            <p style="font-size: clamp(0.6875rem, 1.5vw, 0.875rem);
+color: #64748B;
+font-weight: 600;
+margin: 0 0 0.25rem 0">Based on Research by</p>
+                            <p style="font-size: clamp(0.8125rem, 2vw, 1.125rem);
+color: #1E293B;
+margin: 0;
+font-weight: 600">H. Kent Baker & Rob Weigand</p>
+                        </div>
+                        <div style="width: 1px;
+background-color: #E2E8F0;
+height: auto;
+min-height: clamp(1.5rem, 4vw, 2rem)"></div>
+                        <div>
+                            <p style="font-size: clamp(0.6875rem, 1.5vw, 0.875rem);
+color: #64748B;
+font-weight: 600;
+margin: 0 0 0.25rem 0">Date</p>
+                            <p style="font-size: clamp(0.8125rem, 2vw, 1.125rem);
+color: #1E293B;
+margin: 0;
+font-weight: 600">January 2026</p>
+                        </div>
+                        <div>
+                            <p style="font-size: clamp(0.6875rem, 1.5vw, 0.875rem);
+color: #64748B;
+font-weight: 600;
+margin: 0 0 0.25rem 0">Group 3</p>
+                            <p style="font-size: clamp(0.8125rem, 2vw, 1.125rem);
+color: #1E293B;
+margin: 0;
+font-weight: 600">Sujan Karki, Deepika Adhikari, Achal Goenka</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: The Dividend Puzzle -->
+        <div class="slide" id="slide-2">
+            <div style="width: 100%;
+min-height: 100%;
+padding: clamp(1.5rem, 4vw, 3.5rem);
+display: flex;
+flex-direction: column;
+background-color: #FFF;
+box-sizing: border-box">
+                <div>
+                    <span class="section-tag">Core Question</span>
+                    <h1 class="main-title heading-font" style="margin-bottom: clamp(0.5rem, 1.5vw, 1rem)">The Dividend
+                        Puzzle</h1>
+                    <p style="font-size: clamp(0.8125rem, 2vw, 1.125rem);
+color: #64748B;
+line-height: 1.5;
+margin: clamp(0.5rem, 1.5vw, 1rem) 0 clamp(1rem, 3vw, 2.5rem) 0">
+                        Despite extensive research over five decades, there's no consensus on whether dividend policy
+                        affects firm value.
+                    </p>
+                </div>
+                <div style="display: grid;
+grid-template-columns: clamp(1fr, minmax(280px, 1fr) minmax(280px, 1fr));
+gap: clamp(1rem, 3vw, 2rem);
+margin-bottom: clamp(1rem, 3vw, auto)">
+                    <div class="theory-card" style="background: linear-gradient(135deg, #FEF2F2 0%, #FFF 100%);
+border-left: 4px solid #EF4444">
+                        <div style="display: flex;
+align-items: center;
+gap: clamp(0.5rem, 1vw, 1rem);
+margin-bottom: clamp(0.5rem, 1vw, 1rem)">
+                            <div style="width: clamp(2rem, 5vw, 3rem);
+height: clamp(2rem, 5vw, 3rem);
+background-color: #FEE2E2;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0">
+                                <i class="fas fa-times-circle text-red-600"
+                                    style="font-size: clamp(1rem, 3vw, 2rem)"></i>
+                            </div>
+                            <h3 style="font-size: clamp(0.875rem, 2vw, 1.25rem);
+font-weight: 700;
+color: #1E293B;
+margin: 0">Dividend Irrelevance</h3>
+                        </div>
+                        <p style="font-size: clamp(0.6875rem, 1.5vw, 0.875rem);
+color: #64748B;
+margin: 0;
+line-height: 1.4">
+                            Miller & Modigliani (1961): In perfect capital markets, dividend policy has no effect on
+                            firm value.
+                        </p>
+                    </div>
+                    <div class="theory-card" style="background: linear-gradient(135deg, #F0FDF4 0%, #FFF 100%);
+border-left: 4px solid #22C55E">
+                        <div style="display: flex;
+align-items: center;
+gap: clamp(0.5rem, 1vw, 1rem);
+margin-bottom: clamp(0.5rem, 1vw, 1rem)">
+                            <div style="width: clamp(2rem, 5vw, 3rem);
+height: clamp(2rem, 5vw, 3rem);
+background-color: #DCFCE7;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0">
+                                <i class="fas fa-check-circle text-green-600"
+                                    style="font-size: clamp(1rem, 3vw, 2rem)"></i>
+                            </div>
+                            <h3 style="font-size: clamp(0.875rem, 2vw, 1.25rem);
+font-weight: 700;
+color: #1E293B;
+margin: 0">Dividend Relevance</h3>
+                        </div>
+                        <p style="font-size: clamp(0.6875rem, 1.5vw, 0.875rem);
+color: #64748B;
+margin: 0;
+line-height: 1.4">
+                            Williams (1938), Lintner (1965): Dividends signal firm value and affect shareholder wealth.
+                        </p>
+                    </div>
+                </div>
+                <div class="stat-box">
+                    <p style="font-size: clamp(0.6875rem, 1.5vw, 0.875rem);
+color: #1E40AF;
+font-weight: 600;
+margin: 0;
+line-height: 1.4">
+                        <i class="fas fa-quote-left mr-2"></i>
+                        "The harder we look at dividend picture, more it seems like a puzzle, with pieces that just
+                        don't fit together." — Black (1976)
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Historical Trends -->
+        <div class="slide" id="slide-3">
+            <div style="width: 100%;
+min-height: 100%;
+padding: clamp(1.5rem, 4vw, 3.5rem);
+display: flex;
+flex-direction: column;
+background-color: #FFF;
+box-sizing: border-box">
+                <div>
+                    <span class="section-tag">Historical Analysis</span>
+                    <h1 class="main-title heading-font" style="margin-bottom: clamp(0.5rem, 1.5vw, 1rem)">Declining Role
+                        of Dividends</h1>
+                    <p style="font-size: clamp(0.8125rem, 2vw, 1.125rem);
+color: #64748B;
+line-height: 1.5;
+margin: clamp(0.5rem, 1.5vw, 1rem) 0 clamp(1rem, 3vw, 2rem) 0">
+                        Dividends once dominated investor returns but have steadily declined in importance.
+                    </p>
+                </div>
+                <div style="display: grid;
+grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+gap: clamp(0.75rem, 2vw, 1.5rem);
+margin-bottom: clamp(1rem, 3vw, auto)">
+                    <div class="theory-card" style="text-align: center;
+padding: clamp(0.5rem, 1.5vw, 1.25rem)">
+                        <div style="font-size: clamp(1.5rem, 4vw, 2.5rem);
+font-weight: 700;
+color: #1E40AF;
+line-height: 1;
+margin-bottom: 0.375rem;
+font-family: 'Space Grotesk', sans-serif">90%</div>
+                        <div style="font-size: clamp(0.6875rem, 1.5vw, 0.875rem);
+color: #64748B;
+margin-bottom: 0.1875rem">1801-1870</div>
+                        <div style="font-size: clamp(0.625rem, 1.25vw, 0.75rem);
+color: #94A3B8">Early Era</div>
+                    </div>
+                    <div class="theory-card" style="text-align: center;
+padding: clamp(0.5rem, 1.5vw, 1.25rem)">
+                        <div style="font-size: clamp(1.5rem, 4vw, 2.5rem);
+font-weight: 700;
+color: #1E40AF;
+line-height: 1;
+margin-bottom: 0.375rem;
+font-family: 'Space Grotesk', sans-serif">71%</div>
+                        <div style="font-size: clamp(0.6875rem, 1.5vw, 0.875rem);
+color: #64748B;
+margin-bottom: 0.1875rem">1871-1920</div>
+                        <div style="font-size: clamp(0.625rem, 1.25vw, 0.75rem);
+color: #94A3B8">Pre-War</div>
+                    </div>
+                    <div class="theory-card" style="text-align: center;
+padding: clamp(0.5rem, 1.5vw, 1.25rem)">
+                        <div style="font-size: clamp(1.5rem, 4vw, 2.5rem);
+font-weight: 700;
+color: #7C3AED;
+line-height: 1;
+margin-bottom: 0.375rem;
+font-family: 'Space Grotesk', sans-serif">44%</div>
+                        <div style="font-size: clamp(0.6875rem, 1.5vw, 0.875rem);
+color: #64748B;
+margin-bottom: 0.1875rem">1921-1945</div>
+                        <div style="font-size: clamp(0.625rem, 1.25vw, 0.75rem);
+color: #94A3B8">Interwar</div>
+                    </div>
+                    <div class="theory-card" style="text-align: center;
+padding: clamp(0.5rem, 1.5vw, 1.25rem)">
+                        <div style="font-size: clamp(1.5rem, 4vw, 2.5rem);
+font-weight: 700;
+color: #7C3AED;
+line-height: 1;
+margin-bottom: 0.375rem;
+font-family: 'Space Grotesk', sans-serif">40%</div>
+                        <div style="font-size: clamp(0.6875rem, 1.5vw, 0.875rem);
+color: #64748B;
+margin-bottom: 0.1875rem">1946-1982</div>
+                        <div style="font-size: clamp(0.625rem, 1.25vw, 0.75rem);
+color: #94A3B8">Post-War</div>
+                    </div>
+                    <div class="theory-card" style="text-align: center;
+padding: clamp(0.5rem, 1.5vw, 1.25rem)">
+                        <div style="font-size: clamp(1.5rem, 4vw, 2.5rem);
+font-weight: 700;
+color: #64748B;
+line-height: 1;
+margin-bottom: 0.375rem;
+font-family: 'Space Grotesk', sans-serif">22%</div>
+                        <div style="font-size: clamp(0.6875rem, 1.5vw, 0.875rem);
+color: #64748B;
+margin-bottom: 0.1875rem">1983-2012</div>
+                        <div style="font-size: clamp(0.625rem, 1.25vw, 0.75rem);
+color: #94A3B8">Modern</div>
+                    </div>
+                </div>
+                <div class="stat-box">
+                    <p style="font-size: clamp(0.6875rem, 1.5vw, 0.875rem);
+color: #1E40AF;
+margin: 0;
+font-weight: 500;
+line-height: 1.4">
+                        <i class="fas fa-lightbulb mr-2"></i>
+                        Key Insight: Share repurchases have increasingly replaced dividends since 1980s.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: MM Theory -->
+        <div class="slide" id="slide-4">
+            <div style="width: 100%;
+min-height: 100%;
+padding: clamp(1.5rem, 4vw, 3.5rem);
+display: flex;
+flex-direction: column;
+background-color: #FFF;
+box-sizing: border-box">
+                <div>
+                    <span class="section-tag">Foundational Theory</span>
+                    <h1 class="main-title heading-font" style="margin-bottom: clamp(0.5rem, 1.5vw, 1rem)">
+                        Miller-Modigliani Irrelevance</h1>
+                    <p style="font-size: clamp(0.8125rem, 2vw, 1.125rem);
+color: #64748B;
+line-height: 1.5;
+margin: clamp(0.5rem, 1.5vw, 1rem) 0 clamp(1rem, 3vw, 2rem) 0">
+                        In perfect, frictionless markets, dividend policy has no effect on firm value.
+                    </p>
+                </div>
+                <div style="display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: clamp(1rem, 3vw, 2.5rem);
+margin-bottom: clamp(1rem, 3vw, auto)">
+                    <div>
+                        <h3 style="font-size: clamp(0.875rem, 2vw, 1.25rem);
+font-weight: 700;
+color: #1E293B;
+margin-bottom: clamp(0.5rem, 1vw, 1rem)">Key Assumptions</h3>
+                        <div
+                            style="display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(0.5rem, 1vw, 1rem)">
+                            <div class="theory-card" style="padding: clamp(0.5rem, 1.5vw, 0.875rem)">
+                                <div style="font-weight: 600;
+color: #1E293B;
+margin-bottom: 0.1875rem;
+font-size: clamp(0.75rem, 1.75vw, 0.875rem)">Perfect Markets</div>
+                                <div style="font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+color: #64748B;
+margin: 0;
+line-height: 1.4">No transaction costs, symmetric information</div>
+                            </div>
+                            <div class="theory-card" style="padding: clamp(0.5rem, 1.5vw, 0.875rem)">
+                                <div style="font-weight: 600;
+color: #1E293B;
+margin-bottom: 0.1875rem;
+font-size: clamp(0.75rem, 1.75vw, 0.875rem)">No Taxes</div>
+                                <div style="font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+color: #64748B;
+margin: 0;
+line-height: 1.4">Dividends and capital gains taxed identically</div>
+                            </div>
+                            <div class="theory-card" style="padding: clamp(0.5rem, 1.5vw, 0.875rem)">
+                                <div style="font-weight: 600;
+color: #1E293B;
+margin-bottom: 0.1875rem;
+font-size: clamp(0.75rem, 1.75vw, 0.875rem)">Rational Investors</div>
+                                <div style="font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+color: #64748B;
+margin: 0;
+line-height: 1.4">Indifferent between dividends and capital gains</div>
+                            </div>
+                            <div class="theory-card" style="padding: clamp(0.5rem, 1.5vw, 0.875rem)">
+                                <div style="font-weight: 600;
+color: #1E293B;
+margin-bottom: 0.1875rem;
+font-size: clamp(0.75rem, 1.75vw, 0.875rem)">Value Determination</div>
+                                <div style="font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+color: #64748B;
+margin: 0;
+line-height: 1.4">Based on assets and cash flows, not distribution method</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: flex;
+flex-direction: column;
+justify-content: flex-start">
+                        <div class="theory-card" style="background: linear-gradient(135deg, #EFF6FF 0%, #FFF 100%);
+border: 2px solid #1E40AF;
+margin-bottom: clamp(0.75rem, 2vw, auto)">
+                            <div style="display: flex;
+align-items: center;
+gap: clamp(0.5rem, 1vw, 1rem);
+margin-bottom: clamp(0.5rem, 1vw, 1rem)">
+                                <i class="fas fa-calculator" style="font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+color: #1E40AF;
+flex-shrink: 0"></i>
+                                <div>
+                                    <div style="font-size: clamp(0.875rem, 2vw, 1.25rem);
+font-weight: 700;
+color: #1E293B">The Proposition</div>
+                                    <div style="font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+color: #64748B">Miller & Modigliani (1961)</div>
+                                </div>
+                            </div>
+                            <div style="font-size: clamp(0.75rem, 1.75vw, 1rem);
+color: #475569;
+line-height: 1.4">
+                                Investment policy alone determines firm value. Different payout policies are simply
+                                slicing same cash flow pie.
+                            </div>
+                        </div>
+                        <div class="stat-box">
+                            <p style="font-size: clamp(0.6875rem, 1.5vw, 0.875rem);
+color: #1E40AF;
+margin: 0;
+font-weight: 500;
+line-height: 1.4">
+                                <i class="fas fa-exclamation-triangle mr-2"></i>
+                                Real-world markets are neither perfect nor frictionless.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Why Do Firms Pay Dividends? (Merged & Simplified) -->
+        <div class="slide" id="slide-5">
+            <div style="width: 100%;
+min-height: 100%;
+padding: clamp(1.5rem, 4vw, 3.5rem);
+display: flex;
+flex-direction: column;
+background-color: #FFF;
+box-sizing: border-box">
+                <div>
+                    <span class="section-tag">Main Question</span>
+                    <h1 class="main-title heading-font" style="margin-bottom: clamp(0.5rem, 1.5vw, 1rem)">Why Do Firms
+                        Pay Dividends?</h1>
+                    <p style="font-size: clamp(0.8125rem, 2vw, 1.125rem);
+color: #64748B;
+line-height: 1.5;
+margin: clamp(0.5rem, 1.5vw, 1rem) 0 clamp(1rem, 3vw, 2rem) 0">
+                        Different theories explain why companies pay dividends. Here's a simple breakdown.
+                    </p>
+                </div>
+                <div style="display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: clamp(0.75rem, 1.5vw, 1.25rem);
+margin-bottom: clamp(1rem, 3vw, auto)">
+                    <div class="theory-card">
+                        <div style="display: flex;
+align-items: center;
+gap: clamp(0.5rem, 1vw, 1rem);
+margin-bottom: clamp(0.5rem, 1vw, 1rem)">
+                            <div style="width: clamp(1.5rem, 4vw, 2.5rem);
+height: clamp(1.5rem, 4vw, 2.5rem);
+background-color: #FEF3C7;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0">
+                                <i class="fas fa-hand-holding-usd" style="font-size: clamp(0.875rem, 2vw, 1.5rem);
+color: #92400E"></i>
+                            </div>
+                            <div>
+                                <h3 style="font-size: clamp(0.8125rem, 1.75vw, 1.125rem);
+font-weight: 700;
+color: #1E293B;
+margin: 0 0 0.25rem 0">Bird-in-the-Hand</h3>
+                                <span class="evidence-badge badge-mixed"
+                                    style="font-size: clamp(0.5625rem, 1.25vw, 0.6875rem)">Mixed Evidence</span>
+                            </div>
+                        </div>
+                        <p style="font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+color: #64748B;
+margin: 0;
+line-height: 1.4">
+                            Investors prefer sure dividend payments now over uncertain future gains.
+                        </p>
+                    </div>
+                    <div class="theory-card">
+                        <div style="display: flex;
+align-items: center;
+gap: clamp(0.5rem, 1vw, 1rem);
+margin-bottom: clamp(0.5rem, 1vw, 1rem)">
+                            <div style="width: clamp(1.5rem, 4vw, 2.5rem);
+height: clamp(1.5rem, 4vw, 2.5rem);
+background-color: #F3E8FF;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0">
+                                <i class="fas fa-signal" style="font-size: clamp(0.875rem, 2vw, 1.5rem);
+color: #7C3AED"></i>
+                            </div>
+                            <div>
+                                <h3 style="font-size: clamp(0.8125rem, 1.75vw, 1.125rem);
+font-weight: 700;
+color: #1E293B;
+margin: 0 0 0.25rem 0">Signaling</h3>
+                                <span class="evidence-badge badge-supported"
+                                    style="font-size: clamp(0.5625rem, 1.25vw, 0.6875rem)">Most Supported</span>
+                            </div>
+                        </div>
+                        <p style="font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+color: #64748B;
+margin: 0;
+line-height: 1.4">
+                            Dividend changes tell investors about company's future prospects.
+                        </p>
+                    </div>
+                    <div class="theory-card">
+                        <div style="display: flex;
+align-items: center;
+gap: clamp(0.5rem, 1vw, 1rem);
+margin-bottom: clamp(0.5rem, 1vw, 1rem)">
+                            <div style="width: clamp(1.5rem, 4vw, 2.5rem);
+height: clamp(1.5rem, 4vw, 2.5rem);
+background-color: #DCFCE7;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0">
+                                <i class="fas fa-balance-scale" style="font-size: clamp(0.875rem, 2vw, 1.5rem);
+color: #059669"></i>
+                            </div>
+                            <div>
+                                <h3 style="font-size: clamp(0.8125rem, 1.75vw, 1.125rem);
+font-weight: 700;
+color: #1E293B;
+margin: 0 0 0.25rem 0">Agency Costs</h3>
+                                <span class="evidence-badge badge-supported"
+                                    style="font-size: clamp(0.5625rem, 1.25vw, 0.6875rem)">Strong Support</span>
+                            </div>
+                        </div>
+                        <p style="font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+color: #64748B;
+margin: 0;
+line-height: 1.4">
+                            Paying dividends reduces managers' ability to waste money on bad projects.
+                        </p>
+                    </div>
+                    <div class="theory-card">
+                        <div style="display: flex;
+align-items: center;
+gap: clamp(0.5rem, 1vw, 1rem);
+margin-bottom: clamp(0.5rem, 1vw, 1rem)">
+                            <div style="width: clamp(1.5rem, 4vw, 2.5rem);
+height: clamp(1.5rem, 4vw, 2.5rem);
+background-color: #F3E8FF;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0">
+                                <i class="fas fa-brain" style="font-size: clamp(0.875rem, 2vw, 1.5rem);
+color: #7C3AED"></i>
+                            </div>
+                            <div>
+                                <h3 style="font-size: clamp(0.8125rem, 1.75vw, 1.125rem);
+font-weight: 700;
+color: #1E293B;
+margin: 0 0 0.25rem 0">Behavioral</h3>
+                                <span class="evidence-badge badge-mixed"
+                                    style="font-size: clamp(0.5625rem, 1.25vw, 0.6875rem)">Mixed Evidence</span>
+                            </div>
+                        </div>
+                        <p style="font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+color: #64748B;
+margin: 0;
+line-height: 1.4">
+                            Some investors have natural preference for dividends due to psychology.
+                        </p>
+                    </div>
+                    <div class="theory-card" style="border-left: 4px solid #22C55E;
+background: linear-gradient(135deg, #F0FDF4 0%, #FFF 100%)">
+                        <div style="display: flex;
+align-items: center;
+gap: clamp(0.5rem, 1vw, 1rem);
+margin-bottom: clamp(0.5rem, 1vw, 1rem)">
+                            <div style="width: clamp(1.5rem, 4vw, 2.5rem);
+height: clamp(1.5rem, 4vw, 2.5rem);
+background-color: #DCFCE7;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0">
+                                <i class="fas fa-chart-line" style="font-size: clamp(0.875rem, 2vw, 1.5rem);
+color: #059669"></i>
+                            </div>
+                            <div>
+                                <h3 style="font-size: clamp(0.8125rem, 1.75vw, 1.125rem);
+font-weight: 700;
+color: #1E293B;
+margin: 0 0 0.25rem 0">Life-Cycle</h3>
+                                <span class="evidence-badge badge-supported"
+                                    style="font-size: clamp(0.5625rem, 1.25vw, 0.6875rem)">Best Supported</span>
+                            </div>
+                        </div>
+                        <p style="font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+color: #64748B;
+margin: 0;
+line-height: 1.4">
+                            Mature firms pay dividends when growth slows and profits are stable.
+                        </p>
+                    </div>
+                    <div class="theory-card">
+                        <div style="display: flex;
+align-items: center;
+gap: clamp(0.5rem, 1vw, 1rem);
+margin-bottom: clamp(0.5rem, 1vw, 1rem)">
+                            <div style="width: clamp(1.5rem, 4vw, 2.5rem);
+height: clamp(1.5rem, 4vw, 2.5rem);
+background-color: #DBEAFE;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0">
+                                <i class="fas fa-users" style="font-size: clamp(0.875rem, 2vw, 1.5rem);
+color: #2563EB"></i>
+                            </div>
+                            <div>
+                                <h3 style="font-size: clamp(0.8125rem, 1.75vw, 1.125rem);
+font-weight: 700;
+color: #1E293B;
+margin: 0 0 0.25rem 0">Catering</h3>
+                                <span class="evidence-badge badge-mixed"
+                                    style="font-size: clamp(0.5625rem, 1.25vw, 0.6875rem)">Mixed Evidence</span>
+                            </div>
+                        </div>
+                        <p style="font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+color: #64748B;
+margin: 0;
+line-height: 1.4">
+                            Managers adjust dividend policy based on what investors want.
+                        </p>
+                    </div>
+                    <div class="theory-card">
+                        <div style="display: flex;
+align-items: center;
+gap: clamp(0.5rem, 1vw, 1rem);
+margin-bottom: clamp(0.5rem, 1vw, 1rem)">
+                            <div style="width: clamp(1.5rem, 4vw, 2.5rem);
+height: clamp(1.5rem, 4vw, 2.5rem);
+background-color: #FEE2E2;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0">
+                                <i class="fas fa-percentage" style="font-size: clamp(0.875rem, 2vw, 1.5rem);
+color: #DC2626"></i>
+                            </div>
+                            <div>
+                                <h3 style="font-size: clamp(0.8125rem, 1.75vw, 1.125rem);
+font-weight: 700;
+color: #1E293B;
+margin: 0 0 0.25rem 0">Taxes</h3>
+                                <span class="evidence-badge badge-mixed"
+                                    style="font-size: clamp(0.5625rem, 1.25vw, 0.6875rem)">Minor Factor</span>
+                            </div>
+                        </div>
+                        <p style="font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+color: #64748B;
+margin: 0;
+line-height: 1.4">
+                            Tax differences between dividends and capital gains matter to investors.
+                        </p>
+                    </div>
+                </div>
+                <div class="stat-box">
+                    <p style="font-size: clamp(0.6875rem, 1.5vw, 0.875rem);
+color: #1E40AF;
+margin: 0;
+font-weight: 500;
+line-height: 1.4">
+                        <i class="fas fa-lightbulb mr-2"></i>
+                        <strong>Key Takeaway:</strong> Life-Cycle theory has strongest evidence. Signaling and Agency
+                        Costs also well-supported. Most theories show mixed results.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Modern Theories -->
+        <div class="slide" id="slide-6">
+            <div style="width: 100%;
+min-height: 100%;
+padding: clamp(1.5rem, 4vw, 3.5rem);
+display: flex;
+flex-direction: column;
+background-color: #FFF;
+box-sizing: border-box">
+                <div>
+                    <span class="section-tag">Modern Perspectives</span>
+                    <h1 class="main-title heading-font" style="margin-bottom: clamp(0.5rem, 1.5vw, 1rem)">
+                        Contemporary<br />Theories</h1>
+                    <p style="font-size: clamp(0.8125rem, 2vw, 1.125rem);
+color: #64748B;
+line-height: 1.5;
+margin: clamp(0.5rem, 1.5vw, 1rem) 0 clamp(1rem, 3vw, 2rem) 0">
+                        Recent explanations incorporating behavioral and market-based factors.
+                    </p>
+                </div>
+                <div style="display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: clamp(0.75rem, 2vw, 1.5rem);
+margin-bottom: clamp(1rem, 3vw, auto)">
+                    <div class="theory-card">
+                        <div style="display: flex;
+align-items: center;
+gap: clamp(0.5rem, 1vw, 1rem);
+margin-bottom: clamp(0.5rem, 1vw, 1rem)">
+                            <div style="width: clamp(1.5rem, 4vw, 2.5rem);
+height: clamp(1.5rem, 4vw, 2.5rem);
+background-color: #F3E8FF;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0">
+                                <i class="fas fa-brain" style="font-size: clamp(0.875rem, 2vw, 1.5rem);
+color: #7C3AED"></i>
+                            </div>
+                            <h3 style="font-size: clamp(0.8125rem, 1.75vw, 1.125rem);
+font-weight: 700;
+color: #1E293B;
+margin: 0">Behavioral</h3>
+                        </div>
+                        <p style="font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+color: #64748B;
+line-height: 1.4;
+margin-bottom: clamp(0.5rem, 1vw, 1rem)">
+                            Self-control, mental accounting, regret aversion, and demographic factors.
+                        </p>
+                        <div>
+                            <span class="evidence-badge badge-mixed"><i class="fas fa-question-circle mr-1"></i>Mixed
+                                Evidence</span>
+                        </div>
+                    </div>
+                    <div class="theory-card">
+                        <div style="display: flex;
+align-items: center;
+gap: clamp(0.5rem, 1vw, 1rem);
+margin-bottom: clamp(0.5rem, 1vw, 1rem)">
+                            <div style="width: clamp(1.5rem, 4vw, 2.5rem);
+height: clamp(1.5rem, 4vw, 2.5rem);
+background-color: #DCFCE7;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0">
+                                <i class="fas fa-chart-line" style="font-size: clamp(0.875rem, 2vw, 1.5rem);
+color: #059669"></i>
+                            </div>
+                            <h3 style="font-size: clamp(0.8125rem, 1.75vw, 1.125rem);
+font-weight: 700;
+color: #1E293B;
+margin: 0">Life-Cycle</h3>
+                        </div>
+                        <p style="font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+color: #64748B;
+line-height: 1.4;
+margin-bottom: clamp(0.5rem, 1vw, 1rem)">
+                            Dividends paid when growth and profitability decline at maturity.
+                        </p>
+                        <div>
+                            <span class="evidence-badge badge-supported"><i class="fas fa-check-circle mr-1"></i>Best
+                                Supported</span>
+                        </div>
+                    </div>
+                    <div class="theory-card">
+                        <div style="display: flex;
+align-items: center;
+gap: clamp(0.5rem, 1vw, 1rem);
+margin-bottom: clamp(0.5rem, 1vw, 1rem)">
+                            <div style="width: clamp(1.5rem, 4vw, 2.5rem);
+height: clamp(1.5rem, 4vw, 2.5rem);
+background-color: #DBEAFE;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0">
+                                <i class="fas fa-users" style="font-size: clamp(0.875rem, 2vw, 1.5rem);
+color: #2563EB"></i>
+                            </div>
+                            <h3 style="font-size: clamp(0.8125rem, 1.75vw, 1.125rem);
+font-weight: 700;
+color: #1E293B;
+margin: 0">Catering</h3>
+                        </div>
+                        <p style="font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+color: #64748B;
+line-height: 1.4;
+margin-bottom: clamp(0.5rem, 1vw, 1rem)">
+                            Managers adapt policy based on investor sentiment and demand.
+                        </p>
+                        <div>
+                            <span class="evidence-badge badge-mixed"><i class="fas fa-question-circle mr-1"></i>Mixed
+                                Evidence</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Determinants of Dividend Policy -->
+        <div class="slide" id="slide-7">
+            <div style="width: 100%;
+min-height: 100%;
+padding: clamp(1.5rem, 4vw, 3.5rem);
+display: flex;
+flex-direction: column;
+background-color: #FFF;
+box-sizing: border-box">
+                <div>
+                    <span class="section-tag">Key Factors</span>
+                    <h1 class="main-title heading-font" style="margin-bottom: clamp(0.5rem, 1.5vw, 1rem)">What
+                        Determines<br />Dividend Policy?</h1>
+                    <p style="font-size: clamp(0.8125rem, 2vw, 1.125rem);
+color: #64748B;
+line-height: 1.5;
+margin: clamp(0.5rem, 1.5vw, 1rem) 0 clamp(1rem, 3vw, 2rem) 0">
+                        Multiple factors interact to shape a firm's dividend decisions.
+                    </p>
+                </div>
+                <div style="display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: clamp(0.75rem, 2vw, 1.5rem);
+margin-bottom: clamp(1rem, 3vw, auto)">
+                    <div class="theory-card">
+                        <div style="display: flex;
+align-items: center;
+gap: clamp(0.375rem, 1vw, 0.875rem);
+margin-bottom: clamp(0.5rem, 1vw, 1rem)">
+                            <div style="width: clamp(1.25rem, 3vw, 2.25rem);
+height: clamp(1.25rem, 3vw, 2.25rem);
+background-color: #DBEAFE;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0">
+                                <i class="fas fa-building" style="font-size: clamp(0.75rem, 1.75vw, 1.25rem);
+color: #2563EB"></i>
+                            </div>
+                            <h3 style="font-size: clamp(0.8125rem, 1.75vw, 1.125rem);
+font-weight: 700;
+color: #1E293B;
+margin: 0">Firm Characteristics</h3>
+                        </div>
+                        <ul style="list-style: none;
+padding: 0;
+margin: 0">
+                            <li style="font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+color: #475569;
+margin-bottom: clamp(0.25rem, 0.75vw, 0.5rem);
+padding-left: clamp(1rem, 2vw, 1.25rem);
+position: relative;
+line-height: 1.3"><span style="position: absolute;
+left: 0;
+color: #22C55E">+</span> Size</li>
+                            <li style="font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+color: #475569;
+margin-bottom: clamp(0.25rem, 0.75vw, 0.5rem);
+padding-left: clamp(1rem, 2vw, 1.25rem);
+position: relative;
+line-height: 1.3"><span style="position: absolute;
+left: 0;
+color: #22C55E">+</span> Profitability</li>
+                            <li style="font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+color: #475569;
+margin-bottom: clamp(0.25rem, 0.75vw, 0.5rem);
+padding-left: clamp(1rem, 2vw, 1.25rem);
+position: relative;
+line-height: 1.3"><span style="position: absolute;
+left: 0;
+color: #EF4444">−</span> Growth Opportunities</li>
+                            <li style="font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+color: #475569;
+margin-bottom: clamp(0.25rem, 0.75vw, 0.5rem);
+padding-left: clamp(1rem, 2vw, 1.25rem);
+position: relative;
+line-height: 1.3"><span style="position: absolute;
+left: 0;
+color: #22C55E">+</span> Maturity</li>
+                            <li style="font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+color: #475569;
+margin-bottom: clamp(0.25rem, 0.75vw, 0.5rem);
+padding-left: clamp(1rem, 2vw, 1.25rem);
+position: relative;
+line-height: 1.3"><span style="position: absolute;
+left: 0;
+color: #22C55E">+</span> Leverage</li>
+                        </ul>
+                    </div>
+                    <div class="theory-card">
+                        <div style="display: flex;
+align-items: center;
+gap: clamp(0.375rem, 1vw, 0.875rem);
+margin-bottom: clamp(0.5rem, 1vw, 1rem)">
+                            <div style="width: clamp(1.25rem, 3vw, 2.25rem);
+height: clamp(1.25rem, 3vw, 2.25rem);
+background-color: #F3E8FF;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0">
+                                <i class="fas fa-chart-area" style="font-size: clamp(0.75rem, 1.75vw, 1.25rem);
+color: #7C3AED"></i>
+                            </div>
+                            <h3 style="font-size: clamp(0.8125rem, 1.75vw, 1.125rem);
+font-weight: 700;
+color: #1E293B;
+margin: 0">Market Characteristics</h3>
+                        </div>
+                        <ul style="list-style: none;
+padding: 0;
+margin: 0">
+                            <li style="font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+color: #475569;
+margin-bottom: clamp(0.25rem, 0.75vw, 0.5rem);
+line-height: 1.3">Tax Laws & Rates</li>
+                            <li style="font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+color: #475569;
+margin-bottom: clamp(0.25rem, 0.75vw, 0.5rem);
+line-height: 1.3">Investor Protection</li>
+                            <li style="font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+color: #475569;
+margin-bottom: clamp(0.25rem, 0.75vw, 0.5rem);
+line-height: 1.3">Product Competition</li>
+                            <li style="font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+color: #475569;
+margin-bottom: clamp(0.25rem, 0.75vw, 0.5rem);
+line-height: 1.3">Market Sentiment</li>
+                            <li style="font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+color: #475569;
+margin-bottom: clamp(0.25rem, 0.75vw, 0.5rem);
+line-height: 1.3">Legal Environment</li>
+                        </ul>
+                    </div>
+                    <div class="theory-card">
+                        <div style="display: flex;
+align-items: center;
+gap: clamp(0.375rem, 1vw, 0.875rem);
+margin-bottom: clamp(0.5rem, 1vw, 1rem)">
+                            <div style="width: clamp(1.25rem, 3vw, 2.25rem);
+height: clamp(1.25rem, 3vw, 2.25rem);
+background-color: #DCFCE7;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0">
+                                <i class="fas fa-exchange-alt" style="font-size: clamp(0.75rem, 1.75vw, 1.25rem);
+color: #059669"></i>
+                            </div>
+                            <h3 style="font-size: clamp(0.8125rem, 1.75vw, 1.125rem);
+font-weight: 700;
+color: #1E293B;
+margin: 0">Substitute Forms</h3>
+                        </div>
+                        <ul style="list-style: none;
+padding: 0;
+margin: 0">
+                            <li style="font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+color: #475569;
+margin-bottom: clamp(0.25rem, 0.75vw, 0.5rem);
+line-height: 1.3">Share Repurchases</li>
+                            <li style="font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+color: #475569;
+margin-bottom: clamp(0.25rem, 0.75vw, 0.5rem);
+line-height: 1.3">Special Dividends</li>
+                            <li style="font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+color: #475569;
+margin-bottom: clamp(0.25rem, 0.75vw, 0.5rem);
+line-height: 1.3">Stock Dividends</li>
+                            <li style="font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+color: #475569;
+margin-bottom: clamp(0.25rem, 0.75vw, 0.5rem);
+line-height: 1.3">Stock Splits</li>
+                            <li style="font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+color: #475569;
+margin-bottom: clamp(0.25rem, 0.75vw, 0.5rem);
+line-height: 1.3">Compensation Options</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="stat-box">
+                    <p style="font-size: clamp(0.6875rem, 1.5vw, 0.875rem);
+color: #1E40AF;
+margin: 0;
+font-weight: 500;
+line-height: 1.4">
+                        <i class="fas fa-lightbulb mr-2"></i>
+                        Stability of past dividends and current/anticipated earnings are consistently most important
+                        determinants.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Stylized Facts -->
+        <div class="slide" id="slide-8">
+            <div style="width: 100%;
+min-height: 100%;
+padding: clamp(1.5rem, 4vw, 3.5rem);
+display: flex;
+flex-direction: column;
+background-color: #FFF;
+box-sizing: border-box">
+                <div>
+                    <span class="section-tag">Research Findings</span>
+                    <h1 class="main-title heading-font" style="margin-bottom: clamp(0.5rem, 1.5vw, 1rem)">Stylized Facts
+                    </h1>
+                    <p style="font-size: clamp(0.8125rem, 2vw, 1.125rem);
+color: #64748B;
+line-height: 1.5;
+margin: clamp(0.5rem, 1.5vw, 1rem) 0 clamp(1rem, 3vw, 2rem) 0">
+                        Key insights from decades of dividend policy research.
+                    </p>
+                </div>
+                <div style="display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: clamp(0.75rem, 2vw, 1.25rem);
+margin-bottom: clamp(1rem, 3vw, auto)">
+                    <div class="theory-card" style="padding: clamp(0.5rem, 1.25vw, 1rem)">
+                        <div style="display: flex;
+align-items: flex-start;
+gap: clamp(0.5rem, 1vw, 1rem)">
+                            <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size:
+                                clamp(1rem, 2.5vw, 1.25rem); color: #1E40AF; flex-shrink: 0">01</span>
+                            <p style="font-size: clamp(0.625rem, 1.5vw, 0.9375rem);
+color: #475569;
+margin: 0;
+line-height: 1.4">Corporate payouts involve large wealth transfers.</p>
+                        </div>
+                    </div>
+                    <div class="theory-card" style="padding: clamp(0.5rem, 1.25vw, 1rem)">
+                        <div style="display: flex;
+align-items: flex-start;
+gap: clamp(0.5rem, 1vw, 1rem)">
+                            <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size:
+                                clamp(1rem, 2.5vw, 1.25rem); color: #1E40AF; flex-shrink: 0">02</span>
+                            <p style="font-size: clamp(0.625rem, 1.5vw, 0.9375rem);
+color: #475569;
+margin: 0;
+line-height: 1.4">US dividends' importance has declined over time.</p>
+                        </div>
+                    </div>
+                    <div class="theory-card" style="padding: clamp(0.5rem, 1.25vw, 1rem)">
+                        <div style="display: flex;
+align-items: flex-start;
+gap: clamp(0.5rem, 1vw, 1rem)">
+                            <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size:
+                                clamp(1rem, 2.5vw, 1.25rem); color: #1E40AF; flex-shrink: 0">03</span>
+                            <p style="font-size: clamp(0.625rem, 1.5vw, 0.9375rem);
+color: #475569;
+margin: 0;
+line-height: 1.4">Share repurchases increasingly important.</p>
+                        </div>
+                    </div>
+                    <div class="theory-card" style="padding: clamp(0.5rem, 1.25vw, 1rem)">
+                        <div style="display: flex;
+align-items: flex-start;
+gap: clamp(0.5rem, 1vw, 1rem)">
+                            <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size:
+                                clamp(1rem, 2.5vw, 1.25rem); color: #1E40AF; flex-shrink: 0">04</span>
+                            <p style="font-size: clamp(0.625rem, 1.5vw, 0.9375rem);
+color: #475569;
+margin: 0;
+line-height: 1.4">Firms follow managed, not residual, policy.</p>
+                        </div>
+                    </div>
+                    <div class="theory-card" style="padding: clamp(0.5rem, 1.25vw, 1rem)">
+                        <div style="display: flex;
+align-items: flex-start;
+gap: clamp(0.5rem, 1vw, 1rem)">
+                            <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size:
+                                clamp(1rem, 2.5vw, 1.25rem); color: #1E40AF; flex-shrink: 0">05</span>
+                            <p style="font-size: clamp(0.625rem, 1.5vw, 0.9375rem);
+color: #475569;
+margin: 0;
+line-height: 1.4">Past dividends and earnings are key determinants.</p>
+                        </div>
+                    </div>
+                    <div class="theory-card" style="padding: clamp(0.5rem, 1.25vw, 1rem)">
+                        <div style="display: flex;
+align-items: flex-start;
+gap: clamp(0.5rem, 1vw, 1rem)">
+                            <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size:
+                                clamp(1rem, 2.5vw, 1.25rem); color: #1E40AF; flex-shrink: 0">06</span>
+                            <p style="font-size: clamp(0.625rem, 1.5vw, 0.9375rem);
+color: #475569;
+margin: 0;
+line-height: 1.4">Market reacts positively to increases.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-box">
+                    <p style="font-size: clamp(0.6875rem, 1.5vw, 0.875rem);
+color: #1E40AF;
+margin: 0;
+font-weight: 500;
+line-height: 1.4">
+                        <i class="fas fa-lightbulb mr-2"></i>
+                        Universal Theory Doesn't Exist: No one-size-fits-all explanation.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Practical Implications -->
+        <div class="slide" id="slide-9">
+            <div style="width: 100%;
+min-height: 100%;
+padding: clamp(1.5rem, 4vw, 3.5rem);
+display: flex;
+flex-direction: column;
+background-color: #FFF;
+box-sizing: border-box">
+                <div>
+                    <span class="section-tag">Managerial Guidance</span>
+                    <h1 class="main-title heading-font" style="margin-bottom: clamp(0.5rem, 1.5vw, 1rem)">
+                        Practical<br />Implications</h1>
+                    <p style="font-size: clamp(0.8125rem, 2vw, 1.125rem);
+color: #64748B;
+line-height: 1.5;
+margin: clamp(0.5rem, 1.5vw, 1rem) 0 clamp(1rem, 3vw, 2rem) 0">
+                        Strategic considerations for corporate financial decision-makers.
+                    </p>
+                </div>
+                <div style="display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: clamp(0.75rem, 2vw, 1.5rem);
+margin-bottom: clamp(1rem, 3vw, auto)">
+                    <div class="theory-card">
+                        <div style="display: flex;
+align-items: center;
+gap: clamp(0.375rem, 1vw, 0.875rem);
+margin-bottom: clamp(0.375rem, 0.75vw, 0.75rem)">
+                            <div style="width: clamp(1.25rem, 3vw, 2.25rem);
+height: clamp(1.25rem, 3vw, 2.25rem);
+background-color: #DBEAFE;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0">
+                                <i class="fas fa-building" style="font-size: clamp(0.75rem, 1.75vw, 1.25rem);
+color: #2563EB"></i>
+                            </div>
+                            <h3 style="font-size: clamp(0.75rem, 1.5vw, 1rem);
+font-weight: 700;
+color: #1E293B;
+margin: 0">Firm-Specific</h3>
+                        </div>
+                        <p style="font-size: clamp(0.5625rem, 1.25vw, 0.875rem);
+color: #64748B;
+line-height: 1.3;
+margin: 0">
+                            Make decisions at micro level considering firm-specific imperfections.
+                        </p>
+                    </div>
+                    <div class="theory-card">
+                        <div style="display: flex;
+align-items: center;
+gap: clamp(0.375rem, 1vw, 0.875rem);
+margin-bottom: clamp(0.375rem, 0.75vw, 0.75rem)">
+                            <div style="width: clamp(1.25rem, 3vw, 2.25rem);
+height: clamp(1.25rem, 3vw, 2.25rem);
+background-color: #F3E8FF;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0">
+                                <i class="fas fa-balance-scale" style="font-size: clamp(0.75rem, 1.75vw, 1.25rem);
+color: #7C3AED"></i>
+                            </div>
+                            <h3 style="font-size: clamp(0.75rem, 1.5vw, 1rem);
+font-weight: 700;
+color: #1E293B;
+margin: 0">Factor Interaction</h3>
+                        </div>
+                        <p style="font-size: clamp(0.5625rem, 1.25vw, 0.875rem);
+color: #64748B;
+line-height: 1.3;
+margin: 0">
+                            Consider relative importance of imperfections and their interactions.
+                        </p>
+                    </div>
+                    <div class="theory-card">
+                        <div style="display: flex;
+align-items: center;
+gap: clamp(0.375rem, 1vw, 0.875rem);
+margin-bottom: clamp(0.375rem, 0.75vw, 0.75rem)">
+                            <div style="width: clamp(1.25rem, 3vw, 2.25rem);
+height: clamp(1.25rem, 3vw, 2.25rem);
+background-color: #DCFCE7;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0">
+                                <i class="fas fa-project-diagram" style="font-size: clamp(0.75rem, 1.75vw, 1.25rem);
+color: #059669"></i>
+                            </div>
+                            <h3 style="font-size: clamp(0.75rem, 1.5vw, 1rem);
+font-weight: 700;
+color: #1E293B;
+margin: 0">Integrated Approach</h3>
+                        </div>
+                        <p style="font-size: clamp(0.5625rem, 1.25vw, 0.875rem);
+color: #64748B;
+line-height: 1.3;
+margin: 0">
+                            Don't consider dividend policy in isolation from investment and financing.
+                        </p>
+                    </div>
+                    <div class="theory-card">
+                        <div style="display: flex;
+align-items: center;
+gap: clamp(0.375rem, 1vw, 0.875rem);
+margin-bottom: clamp(0.375rem, 0.75vw, 0.75rem)">
+                            <div style="width: clamp(1.25rem, 3vw, 2.25rem);
+height: clamp(1.25rem, 3vw, 2.25rem);
+background-color: #FEF3C7;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0">
+                                <i class="fas fa-chart-line" style="font-size: clamp(0.75rem, 1.75vw, 1.25rem);
+color: #92400E"></i>
+                            </div>
+                            <h3 style="font-size: clamp(0.75rem, 1.5vw, 1rem);
+font-weight: 700;
+color: #1E293B;
+margin: 0">Options Compensation</h3>
+                        </div>
+                        <p style="font-size: clamp(0.5625rem, 1.25vw, 0.875rem);
+color: #64748B;
+line-height: 1.3;
+margin: 0">
+                            Options compensation creates incentive for share repurchases.
+                        </p>
+                    </div>
+                    <div class="theory-card">
+                        <div style="display: flex;
+align-items: center;
+gap: clamp(0.375rem, 1vw, 0.875rem);
+margin-bottom: clamp(0.375rem, 0.75vw, 0.75rem)">
+                            <div style="width: clamp(1.25rem, 3vw, 2.25rem);
+height: clamp(1.25rem, 3vw, 2.25rem);
+background-color: #FEE2E2;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0">
+                                <i class="fas fa-tachometer-alt" style="font-size: clamp(0.75rem, 1.75vw, 1.25rem);
+color: #DC2626"></i>
+                            </div>
+                            <h3 style="font-size: clamp(0.75rem, 1.5vw, 1rem);
+font-weight: 700;
+color: #1E293B;
+margin: 0">Balancing Act</h3>
+                        </div>
+                        <p style="font-size: clamp(0.5625rem, 1.25vw, 0.875rem);
+color: #64748B;
+line-height: 1.3;
+margin: 0">
+                            Balance potentially conflicting forces carefully.
+                        </p>
+                    </div>
+                    <div class="theory-card">
+                        <div style="display: flex;
+align-items: center;
+gap: clamp(0.375rem, 1vw, 0.875rem);
+margin-bottom: clamp(0.375rem, 0.75vw, 0.75rem)">
+                            <div style="width: clamp(1.25rem, 3vw, 2.25rem);
+height: clamp(1.25rem, 3vw, 2.25rem);
+background-color: #E0E7FF;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0">
+                                <i class="fas fa-puzzle-piece" style="font-size: clamp(0.75rem, 1.75vw, 1.25rem);
+color: #3730A3"></i>
+                            </div>
+                            <h3 style="font-size: clamp(0.75rem, 1.5vw, 1rem);
+font-weight: 700;
+color: #1E293B;
+margin: 0">Comprehensive Factors</h3>
+                        </div>
+                        <p style="font-size: clamp(0.5625rem, 1.25vw, 0.875rem);
+color: #64748B;
+line-height: 1.3;
+margin: 0">
+                            Include firm characteristics, market conditions, and substitutes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Future Research Directions -->
+        <div class="slide" id="slide-10">
+            <div style="width: 100%;
+min-height: 100%;
+padding: clamp(1.5rem, 4vw, 3.5rem);
+display: flex;
+flex-direction: column;
+background-color: #FFF;
+box-sizing: border-box">
+                <div>
+                    <span class="section-tag">Unanswered Questions</span>
+                    <h1 class="main-title heading-font" style="margin-bottom: clamp(0.5rem, 1.5vw, 1rem)">Future
+                        Research<br />Directions</h1>
+                    <p style="font-size: clamp(0.8125rem, 2vw, 1.125rem);
+color: #64748B;
+line-height: 1.5;
+margin: clamp(0.5rem, 1.5vw, 1rem) 0 clamp(1rem, 3vw, 2rem) 0">
+                        Avenues for advancing dividend policy knowledge.
+                    </p>
+                </div>
+                <div style="display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: clamp(0.75rem, 2vw, 1.25rem);
+margin-bottom: clamp(1rem, 3vw, auto)">
+                    <div class="theory-card" style="padding: clamp(0.5rem, 1.25vw, 1rem)">
+                        <div style="display: flex;
+align-items: flex-start;
+gap: clamp(0.5rem, 1vw, 1rem)">
+                            <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size:
+                                clamp(1rem, 2.5vw, 1.25rem); color: #1E40AF; flex-shrink: 0">01</span>
+                            <p style="font-size: clamp(0.625rem, 1.5vw, 0.9375rem);
+color: #475569;
+margin: 0;
+line-height: 1.4">Effect of ultimate ownership structures on taxation and dividend policy.</p>
+                        </div>
+                    </div>
+                    <div class="theory-card" style="padding: clamp(0.5rem, 1.25vw, 1rem)">
+                        <div style="display: flex;
+align-items: flex-start;
+gap: clamp(0.5rem, 1vw, 1rem)">
+                            <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size:
+                                clamp(1rem, 2.5vw, 1.25rem); color: #1E40AF; flex-shrink: 0">02</span>
+                            <p style="font-size: clamp(0.625rem, 1.5vw, 0.9375rem);
+color: #475569;
+margin: 0;
+line-height: 1.4">Do dividend policy changes signal future prospects or policy shifts?</p>
+                        </div>
+                    </div>
+                    <div class="theory-card" style="padding: clamp(0.5rem, 1.25vw, 1rem)">
+                        <div style="display: flex;
+align-items: flex-start;
+gap: clamp(0.5rem, 1vw, 1rem)">
+                            <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size:
+                                clamp(1rem, 2.5vw, 1.25rem); color: #1E40AF; flex-shrink: 0">03</span>
+                            <p style="font-size: clamp(0.625rem, 1.5vw, 0.9375rem);
+color: #475569;
+margin: 0;
+line-height: 1.4">Reconciling evidence on dividend initiation vs. increases/decreases.</p>
+                        </div>
+                    </div>
+                    <div class="theory-card" style="padding: clamp(0.5rem, 1.25vw, 1rem)">
+                        <div style="display: flex;
+align-items: flex-start;
+gap: clamp(0.5rem, 1vw, 1rem)">
+                            <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size:
+                                clamp(1rem, 2.5vw, 1.25rem); color: #1E40AF; flex-shrink: 0">04</span>
+                            <p style="font-size: clamp(0.625rem, 1.5vw, 0.9375rem);
+color: #475569;
+margin: 0;
+line-height: 1.4">Specific cross-country determinants of dividend policy.</p>
+                        </div>
+                    </div>
+                    <div class="theory-card" style="padding: clamp(0.5rem, 1.25vw, 1rem)">
+                        <div style="display: flex;
+align-items: flex-start;
+gap: clamp(0.5rem, 1vw, 1rem)">
+                            <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size:
+                                clamp(1rem, 2.5vw, 1.25rem); color: #1E40AF; flex-shrink: 0">05</span>
+                            <p style="font-size: clamp(0.625rem, 1.5vw, 0.9375rem);
+color: #475569;
+margin: 0;
+line-height: 1.4">Extent of earnings management for dividend-related objectives.</p>
+                        </div>
+                    </div>
+                    <div class="theory-card" style="padding: clamp(0.5rem, 1.25vw, 1rem)">
+                        <div style="display: flex;
+align-items: flex-start;
+gap: clamp(0.5rem, 1vw, 1rem)">
+                            <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size:
+                                clamp(1rem, 2.5vw, 1.25rem); color: #1E40AF; flex-shrink: 0">06</span>
+                            <p style="font-size: clamp(0.625rem, 1.5vw, 0.9375rem);
+color: #475569;
+margin: 0;
+line-height: 1.4">Integrating payout decisions with capital structure and investment.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-box">
+                    <p style="font-size: clamp(0.6875rem, 1.5vw, 0.875rem);
+color: #1E40AF;
+margin: 0;
+font-weight: 500;
+line-height: 1.4">
+                        <i class="fas fa-lightbulb mr-2"></i>
+                        Research Opportunity: The dividend puzzle remains unresolved. Future work must integrate
+                        additional variables.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Key Takeaways -->
+        <div class="slide" id="slide-11">
+            <div style="width: 100%;
+min-height: 100%;
+padding: clamp(1.5rem, 4vw, 3.5rem);
+display: flex;
+flex-direction: column;
+background-color: #FFF;
+box-sizing: border-box">
+                <div>
+                    <span class="section-tag">Summary & Insights</span>
+                    <h1 class="main-title heading-font" style="margin-bottom: clamp(0.5rem, 1.5vw, 1rem)">Key Takeaways
+                    </h1>
+                    <p style="font-size: clamp(0.8125rem, 2vw, 1.125rem);
+color: #64748B;
+line-height: 1.5;
+margin: clamp(0.5rem, 1.5vw, 1rem) 0 clamp(1rem, 3vw, 2rem) 0">
+                        Final insights from comprehensive dividend policy research.
+                    </p>
+                </div>
+                <div style="display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: clamp(0.75rem, 2vw, 1.25rem);
+margin-bottom: clamp(1rem, 3vw, auto)">
+                    <div class="theory-card" style="padding: clamp(0.5rem, 1.25vw, 1rem)">
+                        <div style="display: flex;
+align-items: flex-start;
+gap: clamp(0.5rem, 1vw, 1rem)">
+                            <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size:
+                                clamp(1rem, 2.5vw, 1.25rem); color: #1E40AF; flex-shrink: 0">1</span>
+                            <p style="font-size: clamp(0.625rem, 1.5vw, 0.9375rem);
+color: #475569;
+margin: 0;
+line-height: 1.4">Despite extensive research, <span style="font-weight: 600;
+color: #1E40AF">dividend puzzle remains unresolved</span> — no single theory provides a complete explanation.</p>
+                        </div>
+                    </div>
+                    <div class="theory-card" style="padding: clamp(0.5rem, 1.25vw, 1rem)">
+                        <div style="display: flex;
+align-items: flex-start;
+gap: clamp(0.5rem, 1vw, 1rem)">
+                            <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size:
+                                clamp(1rem, 2.5vw, 1.25rem); color: #1E40AF; flex-shrink: 0">2</span>
+                            <p style="font-size: clamp(0.625rem, 1.5vw, 0.9375rem);
+color: #475569;
+margin: 0;
+line-height: 1.4"><span style="font-weight: 600;
+color: #1E40AF">Signaling</span>, <span style="font-weight: 600;
+color: #1E40AF">agency costs</span>, and <span style="font-weight: 600;
+color: #1E40AF">life-cycle</span> theories show more empirical support than traditional explanations.</p>
+                        </div>
+                    </div>
+                    <div class="theory-card" style="padding: clamp(0.5rem, 1.25vw, 1rem)">
+                        <div style="display: flex;
+align-items: flex-start;
+gap: clamp(0.5rem, 1vw, 1rem)">
+                            <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size:
+                                clamp(1rem, 2.5vw, 1.25rem); color: #1E40AF; flex-shrink: 0">3</span>
+                            <p style="font-size: clamp(0.625rem, 1.5vw, 0.9375rem);
+color: #475569;
+margin: 0;
+line-height: 1.4">No universal set of factors is appropriate for all firms — dividend policy requires <span style="font-weight: 600;
+color: #1E40AF">firm-specific approaches</span>.</p>
+                        </div>
+                    </div>
+                    <div class="theory-card" style="padding: clamp(0.5rem, 1.25vw, 1rem)">
+                        <div style="display: flex;
+align-items: flex-start;
+gap: clamp(0.5rem, 1vw, 1rem)">
+                            <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size:
+                                clamp(1rem, 2.5vw, 1.25rem); color: #1E40AF; flex-shrink: 0">4</span>
+                            <p style="font-size: clamp(0.625rem, 1.5vw, 0.9375rem);
+color: #475569;
+margin: 0;
+line-height: 1.4">Managers must balance <span style="font-weight: 600;
+color: #1E40AF">multiple conflicting forces</span> including taxes, information asymmetry, and market imperfections.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="theory-card" style="padding: clamp(0.5rem, 1.25vw, 1rem)">
+                        <div style="display: flex;
+align-items: flex-start;
+gap: clamp(0.5rem, 1vw, 1rem)">
+                            <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size:
+                                clamp(1rem, 2.5vw, 1.25rem); color: #1E40AF; flex-shrink: 0">5</span>
+                            <p style="font-size: clamp(0.625rem, 1.5vw, 0.9375rem);
+color: #475569;
+margin: 0;
+line-height: 1.4">Options compensation creates incentives for <span style="font-weight: 600;
+color: #1E40AF">share repurchases</span> over cash dividends.</p>
+                        </div>
+                    </div>
+                    <div class="theory-card" style="padding: clamp(0.5rem, 1.25vw, 1rem);
+background: linear-gradient(135deg, #EFF6FF 0%, #FFF 100%);
+border-left: 4px solid #1E40AF">
+                        <p style="font-size: clamp(0.625rem, 1.5vw, 0.9375rem);
+color: #1E3A8A;
+margin: 0;
+line-height: 1.4;
+font-weight: 500">
+                            <i class="fas fa-lightbulb mr-2" style="color: #1E40AF"></i>
+                            <strong>Practical Guidance:</strong> Develop dividend policies tailored to your firm's
+                            unique characteristics and market conditions. Regularly review and adapt as circumstances
+                            change.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12: Nepal's Dividend Policy -->
+        <div class="slide" id="slide-12">
+            <div style="width: 100%;
+min-height: 100%;
+padding: clamp(1.5rem, 4vw, 3.5rem);
+display: flex;
+flex-direction: column;
+background-color: #FFF;
+box-sizing: border-box">
+                <div>
+                    <span class="section-tag">Local Context</span>
+                    <h1 class="main-title heading-font" style="margin-bottom: clamp(0.5rem, 1.5vw, 1rem)">Nepal's
+                        Dividend Policy</h1>
+                    <p style="font-size: clamp(0.8125rem, 2vw, 1.125rem);
+color: #64748B;
+line-height: 1.5;
+margin: clamp(0.5rem, 1.5vw, 1rem) 0 clamp(1rem, 3vw, 2rem) 0">
+                        How dividend policy works in Nepal's developing capital market.
+                    </p>
+                </div>
+                <div style="display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: clamp(0.75rem, 2vw, 1.5rem);
+margin-bottom: clamp(1rem, 3vw, auto)">
+                    <div class="theory-card" style="border-left: 4px solid #1E40AF">
+                        <div style="display: flex;
+align-items: center;
+gap: clamp(0.5rem, 1vw, 1rem);
+margin-bottom: clamp(0.5rem, 1vw, 1rem)">
+                            <div style="width: clamp(1.5rem, 4vw, 2.5rem);
+height: clamp(1.5rem, 4vw, 2.5rem);
+background-color: #DBEAFE;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0">
+                                <i class="fas fa-gavel" style="font-size: clamp(0.875rem, 2vw, 1.5rem);
+color: #1E40AF"></i>
+                            </div>
+                            <h3 style="font-size: clamp(0.8125rem, 1.75vw, 1.125rem);
+font-weight: 700;
+color: #1E293B;
+margin: 0">Legal Framework</h3>
+                        </div>
+                        <p style="font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+color: #64748B;
+margin: 0;
+line-height: 1.4">
+                            Governed by <strong style="color: #1E40AF">Companies Act</strong> for most firms.
+                        </p>
+                    </div>
+                    <div class="theory-card" style="border-left: 4px solid #7C3AED">
+                        <div style="display: flex;
+align-items: center;
+gap: clamp(0.5rem, 1vw, 1rem);
+margin-bottom: clamp(0.5rem, 1vw, 1rem)">
+                            <div style="width: clamp(1.5rem, 4vw, 2.5rem);
+height: clamp(1.5rem, 4vw, 2.5rem);
+background-color: #F3E8FF;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0">
+                                <i class="fas fa-university" style="font-size: clamp(0.875rem, 2vw, 1.5rem);
+color: #7C3AED"></i>
+                            </div>
+                            <h3 style="font-size: clamp(0.8125rem, 1.75vw, 1.125rem);
+font-weight: 700;
+color: #1E293B;
+margin: 0">NRB Rules</h3>
+                        </div>
+                        <p style="font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+color: #64748B;
+margin: 0;
+line-height: 1.4">
+                            Banks and financial firms follow <strong style="color: #7C3AED">NRB regulations</strong>
+                            requiring capital/reserve levels before dividends.
+                        </p>
+                    </div>
+                    <div class="theory-card" style="border-left: 4px solid #22C55E">
+                        <div style="display: flex;
+align-items: center;
+gap: clamp(0.5rem, 1vw, 1rem);
+margin-bottom: clamp(0.5rem, 1vw, 1rem)">
+                            <div style="width: clamp(1.5rem, 4vw, 2.5rem);
+height: clamp(1.5rem, 4vw, 2.5rem);
+background-color: #DCFCE7;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0">
+                                <i class="fas fa-chart-line" style="font-size: clamp(0.875rem, 2vw, 1.5rem);
+color: #059669"></i>
+                            </div>
+                            <h3 style="font-size: clamp(0.8125rem, 1.75vw, 1.125rem);
+font-weight: 700;
+color: #1E293B;
+margin: 0">Developing Market</h3>
+                        </div>
+                        <p style="font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+color: #64748B;
+margin: 0;
+line-height: 1.4">
+                            Nepal's capital market is still developing and evolving.
+                        </p>
+                    </div>
+                    <div class="theory-card" style="border-left: 4px solid #F59E0B">
+                        <div style="display: flex;
+align-items: center;
+gap: clamp(0.5rem, 1vw, 1rem);
+margin-bottom: clamp(0.5rem, 1vw, 1rem)">
+                            <div style="width: clamp(1.5rem, 4vw, 2.5rem);
+height: clamp(1.5rem, 4vw, 2.5rem);
+background-color: #FEF3C7;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0">
+                                <i class="fas fa-random" style="font-size: clamp(0.875rem, 2vw, 1.5rem);
+color: #92400E"></i>
+                            </div>
+                            <h3 style="font-size: clamp(0.8125rem, 1.75vw, 1.125rem);
+font-weight: 700;
+color: #1E293B;
+margin: 0">Varied Practices</h3>
+                        </div>
+                        <p style="font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+color: #64748B;
+margin: 0;
+line-height: 1.4">
+                            Dividend practices and policies vary widely across different firms.
+                        </p>
+                    </div>
+                    <div class="theory-card" style="border-left: 4px solid #DC2626">
+                        <div style="display: flex;
+align-items: center;
+gap: clamp(0.5rem, 1vw, 1rem);
+margin-bottom: clamp(0.5rem, 1vw, 1rem)">
+                            <div style="width: clamp(1.5rem, 4vw, 2.5rem);
+height: clamp(1.5rem, 4vw, 2.5rem);
+background-color: #FEE2E2;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0">
+                                <i class="fas fa-balance-scale" style="font-size: clamp(0.875rem, 2vw, 1.5rem);
+color: #DC2626"></i>
+                            </div>
+                            <h3 style="font-size: clamp(0.8125rem, 1.75vw, 1.125rem);
+font-weight: 700;
+color: #1E293B;
+margin: 0">Policy Context</h3>
+                        </div>
+                        <p style="font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+color: #64748B;
+margin: 0;
+line-height: 1.4">
+                            Dividend decisions occur within these legal and market realities.
+                        </p>
+                    </div>
+                </div>
+                <div class="stat-box">
+                    <p style="font-size: clamp(0.6875rem, 1.5vw, 0.875rem);
+color: #1E40AF;
+margin: 0;
+font-weight: 500;
+line-height: 1.4">
+                        <i class="fas fa-external-link-alt mr-2"></i>
+                        Reference: Nepal Rastra Bank (NRB) - <a
+                            href="https://www.nrb.org.np/contents/uploads/2022/12/vol26-1_art5.pdf" target="_blank"
+                            style="color: #1E40AF;
+text-decoration: underline">Dividend Policy Research</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 13: Thank You -->
+        <div class="slide" id="slide-13">
+            <div style="width: 100%;
+min-height: 100%;
+padding: clamp(1.5rem, 4vw, 4rem);
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+background: linear-gradient(135deg, #EFF6FF 0%, #FFF 100%);
+position: relative;
+box-sizing: border-box">
+                <div style="text-align: center;
+max-width: 900px">
+                    <span class="section-tag">Thank You</span>
+                    <h1 class="main-title heading-font" style="margin-bottom: clamp(0.5rem, 1.5vw, 1rem)">Questions &
+                        Discussion</h1>
+                    <div style="width: clamp(2rem, 5vw, 6rem);
+height: 4px;
+background: linear-gradient(90deg, #1E40AF, #7C3AED);
+border-radius: 2px;
+margin: 0 auto clamp(1.5rem, 4vw, 3rem)"></div>
+                    <p style="font-size: clamp(0.875rem, 2.5vw, 1.125rem);
+color: #64748B;
+line-height: 1.6;
+margin-bottom: clamp(2rem, 5vw, 3rem);
+font-weight: 400">
+                        Understanding dividend policy is essential for making informed corporate finance decisions and
+                        creating shareholder value.
+                    </p>
+                    <div style="display: flex;
+gap: clamp(1rem, 3vw, 2rem);
+margin-top: clamp(1rem, 3vw, 2rem);
+flex-wrap: wrap;
+justify-content: center">
+                        <div class="theory-card" style="padding: clamp(1rem, 2vw, 1.5rem);
+background: linear-gradient(135deg, #EFF6FF 0%, #FFF 100%);
+border: 2px solid #1E40AF">
+                            <div style="display: flex;
+align-items: center;
+gap: clamp(0.5rem, 1vw, 1rem);
+margin-bottom: clamp(0.5rem, 1vw, 1rem)">
+                                <i class="fas fa-lightbulb" style="font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+color: #1E40AF;
+flex-shrink: 0"></i>
+                                <div>
+                                    <h3 style="font-size: clamp(0.875rem, 2vw, 1.25rem);
+font-weight: 700;
+color: #1E293B;
+margin: 0">Key Learning</h3>
+                                </div>
+                            </div>
+                            <p style="font-size: clamp(0.6875rem, 1.5vw, 0.875rem);
+color: #475569;
+margin: 0;
+line-height: 1.4">
+                                No single theory explains all. Managers must balance multiple factors.
+                            </p>
+                        </div>
+                        <div class="theory-card" style="padding: clamp(1rem, 2vw, 1.5rem);
+background: linear-gradient(135deg, #F3E8FF 0%, #FFF 100%);
+border: 2px solid #7C3AED">
+                            <div style="display: flex;
+align-items: center;
+gap: clamp(0.5rem, 1vw, 1rem);
+margin-bottom: clamp(0.5rem, 1vw, 1rem)">
+                                <i class="fas fa-chart-line" style="font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+color: #7C3AED;
+flex-shrink: 0"></i>
+                                <div>
+                                    <h3 style="font-size: clamp(0.875rem, 2vw, 1.25rem);
+font-weight: 700;
+color: #1E293B;
+margin: 0">Market Context</h3>
+                                </div>
+                            </div>
+                            <p style="font-size: clamp(0.6875rem, 1.5vw, 0.875rem);
+color: #475569;
+margin: 0;
+line-height: 1.4">
+                                Dividend decisions are complex and context-dependent.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top: clamp(1.5rem, 4vw, 2rem);
+text-align: center">
+                    <p style="font-size: clamp(0.75rem, 1.75vw, 0.875rem);
+color: #64748B;
+margin: 0;
+line-height: 1.5">
+                        <i class="fas fa-graduation-cap mr-2" style="color: #1E40AF"></i>
+                        <strong style="color: #1E293B">EMBA Corporate Finance</strong> | January 2026
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <button class="nav-button prev-btn" onclick="changeSlide(-1)" id="prevBtn" disabled>
+        <i class="fas fa-chevron-left"></i>
+    </button>
+    <button class="nav-button next-btn" onclick="changeSlide(1)" id="nextBtn">
+        <i class="fas fa-chevron-right"></i>
+    </button>
+
+    <!-- Slide Indicators -->
+    <div class="slide-indicator">
+        <div class="indicator-dot active" onclick="goToSlide(0)"></div>
+        <div class="indicator-dot" onclick="goToSlide(1)"></div>
+        <div class="indicator-dot" onclick="goToSlide(2)"></div>
+        <div class="indicator-dot" onclick="goToSlide(3)"></div>
+        <div class="indicator-dot" onclick="goToSlide(4)"></div>
+        <div class="indicator-dot" onclick="goToSlide(5)"></div>
+        <div class="indicator-dot" onclick="goToSlide(6)"></div>
+        <div class="indicator-dot" onclick="goToSlide(7)"></div>
+        <div class="indicator-dot" onclick="goToSlide(8)"></div>
+        <div class="indicator-dot" onclick="goToSlide(9)"></div>
+        <div class="indicator-dot" onclick="goToSlide(10)"></div>
+        <div class="indicator-dot" onclick="goToSlide(11)"></div>
+        <div class="indicator-dot" onclick="goToSlide(12)"></div>
+    </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const totalSlides = 13;
+
+        function changeSlide(direction) {
+            currentSlide += direction;
+            if (currentSlide < 0) currentSlide = 0;
+            if (currentSlide >= totalSlides) currentSlide = totalSlides - 1;
+            updateSlide();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlide();
+        }
+
+        function updateSlide() {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.indicator-dot');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                }
+            });
+
+            dots.forEach((dot, index) => {
+                dot.classList.remove('active');
+                if (index === currentSlide) {
+                    dot.classList.add('active');
+                }
+            });
+
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === totalSlides - 1;
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'ArrowLeft') {
+                changeSlide(-1);
+            } else if (e.key === 'ArrowRight') {
+                changeSlide(1);
+            }
+        });
+
+        // Touch/Swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', function (e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+
+        document.addEventListener('touchend', function (e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    changeSlide(1);
+                } else {
+                    changeSlide(-1);
+                }
+            }
+        }
+
+        // Initialize
+        updateSlide();
+    </script>
+</body>
+
+</html>
